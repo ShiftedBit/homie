@@ -1,0 +1,8 @@
+{
+  "name": "homie",
+  "app_id": "fb4cd14a",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
