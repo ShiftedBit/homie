@@ -1,6 +1,13 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import {Facebook, FacebookLoginResponse} from "@ionic-native/facebook";
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {AuthService} from "../../app/core/services/auth.service";
+import {LoginPage} from "../login/login";
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs/Observable";
+
+interface AppState {
+  message: string;
+}
 
 @Component({
   selector: 'page-home',
@@ -8,15 +15,28 @@ import {Facebook, FacebookLoginResponse} from "@ionic-native/facebook";
 })
 export class HomePage {
 
+  message$: Observable<string>;
+
   constructor(public navCtrl: NavController,
-              private fb: Facebook) {
+              public authService: AuthService,
+              public store: Store<AppState>) {
 
-    console.log('Hi');
 
-    this.fb.login(['public_profile', 'user_friends', 'email'])
-      .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
-      .catch(e => console.log('Error logging into Facebook', e));
+    this.message$ = this.store.select('message');
 
   }
 
+  spanishMessage() {
+    this.store.dispatch({type: 'SPANISH' });
+  }
+
+  frenchMessage() {
+    this.store.dispatch({type: 'FRENCH' })
+  }
+
+  logout() {
+    this.authService.logout().then(() => {
+      this.navCtrl.push(LoginPage);
+    });
+  }
 }

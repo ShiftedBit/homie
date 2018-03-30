@@ -10,6 +10,8 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {CoreModule} from "./core/core.module";
 import {LoginPage} from "../pages/login/login";
+import {StoreModule} from "@ngrx/store";
+import {simpleReducer} from "./simple.reducer";
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import {LoginPage} from "../pages/login/login";
   ],
   imports: [
     BrowserModule,
+    StoreModule.forRoot({ message: simpleReducer }),
     CoreModule.forRoot(),
     IonicModule.forRoot(MyApp),
   ],
