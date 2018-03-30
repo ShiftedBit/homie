@@ -3,5 +3,4 @@ Connect with your neighbours
 
 ## Purpose
 
-Escpacially in large cities people who live side by side do not communicate with each other. Sometimes it could be helpful to know more about 
-of your neighbors.
+Escpacially in large cities people who live side by side do not communicate with each other. Sometimes it could be helpful to know more about your neighbors.
