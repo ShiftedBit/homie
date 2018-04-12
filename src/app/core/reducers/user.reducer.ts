@@ -4,7 +4,7 @@ import {User} from "../models/user.model";
 export type Action = UserActions.All;
 
 /// Default app state
-const defaultState: User = new User();
+const defaultState: User = undefined;
 
 /// Helper function to create new state object
 const newState = (state, newData) => {

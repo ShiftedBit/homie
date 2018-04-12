@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ErrorHandler, NgModule} from '@angular/core';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 
-import {MyApp} from './app.component';
+import {HomieApp} from './app.component';
 import {HomePage} from '../pages/home/home';
 import {ListPage} from '../pages/list/list';
 
@@ -11,31 +11,32 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {CoreModule} from "./core/core.module";
 import {LoginPage} from "../pages/login/login";
 import {StoreModule} from "@ngrx/store";
-import {simpleReducer} from "./core/reducers/simple.reducer";
 import {userReducer} from "./core/reducers/user.reducer";
+import {ProfilePage} from "../pages/profile/profile";
 
 @NgModule({
   declarations: [
-    MyApp,
+    HomieApp,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
     StoreModule.forRoot({
-      message: simpleReducer,
       user: userReducer
     }),
     CoreModule.forRoot(),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(HomieApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    HomieApp,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

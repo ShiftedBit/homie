@@ -3,13 +3,19 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>My Profile</ion-title>
     <ion-buttons *ngIf="user | async as user" end>
       <img (click)="showProfile()" height="25px" width="25px" src="{{user.picture ? user.picture.data.url: ''}}" />
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content no-bounce padding>
+  <div *ngIf="user | async as user">
+    <h1>My Profile</h1>
+    <h3>{{user.name}}</h3>
+    <img src="{{user.picture ? user.picture.data.url: ''}}" />
+
+    <button ion-button round outline (click)="logout()">Logout</button>
+  </div>
 </ion-content>
