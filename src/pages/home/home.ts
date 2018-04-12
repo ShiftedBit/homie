@@ -4,9 +4,11 @@ import {AuthService} from "../../app/core/services/auth.service";
 import {LoginPage} from "../login/login";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs/Observable";
+import {User} from "../../app/core/models/user.model";
 
-interface AppState {
+export interface AppState {
   message: string;
+  user: User
 }
 
 @Component({
@@ -15,23 +17,13 @@ interface AppState {
 })
 export class HomePage {
 
-  message$: Observable<string>;
+  user: Observable<User>;
 
   constructor(public navCtrl: NavController,
               public authService: AuthService,
               public store: Store<AppState>) {
 
-
-    this.message$ = this.store.select('message');
-
-  }
-
-  spanishMessage() {
-    this.store.dispatch({type: 'SPANISH' });
-  }
-
-  frenchMessage() {
-    this.store.dispatch({type: 'FRENCH' })
+    this.user = this.store.select('user');
   }
 
   logout() {

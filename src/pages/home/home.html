@@ -10,11 +10,13 @@
 <ion-content padding>
   <h3>Ionic Menu Starter</h3>
 
-  <p>
-    {{message$ | async }}
-  </p>
+  <div *ngIf="user | async as user">
 
-  <button ion-button secondary (click)="spanishMessage()">Spanish</button>
-  <button ion-button secondary (click)="frenchMessage()">French</button>
+
+    <h2>{{ user.name }}</h2>
+    <p>{{ user.email }}</p>
+
+  </div>
+
   <button ion-button secondary (click)="logout()">Logout</button>
 </ion-content>

@@ -11,7 +11,8 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {CoreModule} from "./core/core.module";
 import {LoginPage} from "../pages/login/login";
 import {StoreModule} from "@ngrx/store";
-import {simpleReducer} from "./simple.reducer";
+import {simpleReducer} from "./core/reducers/simple.reducer";
+import {userReducer} from "./core/reducers/user.reducer";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,10 @@ import {simpleReducer} from "./simple.reducer";
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ message: simpleReducer }),
+    StoreModule.forRoot({
+      message: simpleReducer,
+      user: userReducer
+    }),
     CoreModule.forRoot(),
     IonicModule.forRoot(MyApp),
   ],

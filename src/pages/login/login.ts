@@ -17,10 +17,9 @@ export class LoginPage {
   login() {
     this.authService.login()
       .then((response: FacebookLoginResponse) => {
-        this.authService.getUserDetail(response.authResponse.userID).then((user: any) => {
-          console.log(JSON.stringify(user));
+        this.authService.getUserDetail(response.authResponse.userID).then(() => {
+          this.navCtrl.pop();
         });
-        this.navCtrl.pop();
     }).catch(() => {
       console.log('Rejected FB Login');
     });
